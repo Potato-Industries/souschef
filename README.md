@@ -5,6 +5,9 @@ CyberChef (Node-API) encryption / decryption / encoding / decoding (+ more) reci
 
 > CyberChef is really cool! It allows you to rapidly template encryption/decryption/encoding/decoding routines trivially. This is a very simple application that brings CyberChef's capabilities to your shell allowing you to pipe via Stdin/Stdout to other applications. This is especially useful if you don't feel like writing any encryption code from scratch, which was one of the reasons why i wrote this, a similar tool most probably exists somewhere on the internet, oh well. 
 
+Try hooking it up with..
+http://www.dest-unreach.org/socat/
+
 **Requirements**
 
 ```
