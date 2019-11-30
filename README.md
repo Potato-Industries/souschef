@@ -46,12 +46,12 @@ Options:
   --mode, -v    verbose mode on
 
 ```
-Only step. 
+**Recipe Setup**
 
 Craft a recipe.json file according to whatever encryption/decryption/encoding/decoding/etc operations (aka 'CyberChef Recipe') you want. Use https://gchq.github.io/CyberChef/ to draft and export your recipe as compact json.  
 
 
-AES Encrypt -> Base64 Encode
+**AES Encrypt -> Base64 Encode**
 
 ```
 root@WOPR-KALI:/opt/souschef# echo "POTATO" | nodejs souschef.js core -r /opt/souschef/AESe-recipe.json
@@ -59,24 +59,24 @@ YmUxNGEwMDc2ODI5MTlkNzljNmVmYWYwOGY1ZTE0MjE=
 
 ```
 
-AESe-recipe.json
+**AESe-recipe.json**
 
 ```
 [{"op":"AES Encrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"CBC","Raw","Hex"]},{"op":"To Base64","args":["A-Za-z0-9+/="]}]
 ```
 
-Base64 Decode -> AES Decrypt
+**Base64 Decode -> AES Decrypt**
 
 ```
 echo "YmUxNGEwMDc2ODI5MTlkNzljNmVmYWYwOGY1ZTE0MjE=" | nodejs souschef.js core -r /opt/souschef/AESd-recipe.json
 POTATO
 ```
-AESd-recipe.json
+**AESd-recipe.json**
 ```
 [{"op":"From Base64","args":["A-Za-z0-9+/=",true]},{"op":"AES Decrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"CBC","Hex","Raw",{"option":"Hex","string":""}]}]
 ```
 
-Verbose
+**Verbose**
 
 ```
 root@WOPR-KALI:/opt/souschef# echo "POTATO" | nodejs souschef.js core -r /opt/souschef/AESe-recipe.json -v
