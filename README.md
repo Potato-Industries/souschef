@@ -56,7 +56,7 @@ Options:
 
 - Craft a recipe.json file using https://gchq.github.io/CyberChef/ to draft your CyberChef recipe, export it in Compact JSON format.
 
-- For simpler tasks use one of the pre-crated recipes included in the 'recipes' folder. Some recipes will require modification as they are populated by default values (e.g. encryption keys)
+- For simpler tasks use one of the pre-created recipes included in the 'recipes' folder. Some recipes will require modification as they are populated by default values. (e.g. encryption keys)
 
 
 **Generate Hashes**
