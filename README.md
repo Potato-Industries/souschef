@@ -26,11 +26,8 @@ root@WOPR-KALI:/opt/souschef# nodejs souschef.js -h
 souschef.js [command]
 
 Commands:
-  souschef.js socket-rotate  socket encrypt (send), decrypt (recv) CyberChef
-                             recipe mode (rotates encryption method)
-  souschef.js socket-basic   socket encrypt (send), decrypt (recv) CyberChef
-                             recipe mode
-  souschef.js core           stdin to stdout encrypt/decrypt recipe mode
+  souschef.js socket  socket outbound recipe (send), inbound recipe (recv) mode
+  souschef.js core    stdin to stdout recipe mode
 
 Options:
   --version   Show version number                                      [boolean]
@@ -41,14 +38,13 @@ Options:
 root@WOPR-KALI:/opt/souschef# nodejs souschef.js core -h
 souschef.js core
 
-stdin to stdout encrypt/decrypt recipe mode
+stdin to stdout recipe mode
 
 Options:
   --version     Show version number                                    [boolean]
   --help, -h    Show help                                              [boolean]
-  --recipe, -r  file path to encryptor/decryptor CyberChef recipe (.json)
-                                                                        [string]
-  --mode, -v    verbose mode on
+  --recipe, -r  file path to recipe .json                               [string]
+  --mode, -v    verbose on
 
 ```
 
@@ -136,8 +132,7 @@ YmUxNGEwMDc2ODI5MTlkNzljNmVmYWYwOGY1ZTE0MjE=
 
 - Provide ability to chain multiple recipes files in command line. 
 - Provide ability to update common variables in recipe files from command line. (i.e. key, iv, secrets)
-- Socket-Basic: Encrypt (send)/ Decrypt (recv) tcp socket mode.
-- Socket-Rotate: Obfuscation mode, rotate between a predefined list of encryption routines (most probably per message).  
+- Socket-Basic: outbound recipe (send)/ inbound recipe (recv) tcp socket mode.
 
 **Disclaimer**
 
