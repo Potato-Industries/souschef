@@ -1,0 +1,1 @@
+[{"op":"Blowfish Decrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAAA"},{"option":"Hex","string":"BBBBBBBBBBBBBBBB"},"CBC","Hex","Raw"]}]
