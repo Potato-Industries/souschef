@@ -8,50 +8,32 @@ function parseJSON (recipeFilePath) {
 }
 
 const argv = yargs
-    .command('socket-rotate', 'socket encrypt (send), decrypt (recv) CyberChef recipe mode (rotates encryption method)', {
+    .command('socket', 'socket outbound recipe (send), inbound recipe (recv) mode', {
         input: {
             description: 'input',
             alias: 'i',
             type: 'string',
         },
         encryptor: {
-            description: 'file path to encrypt recipe .json',
+            description: 'file path to outbound recipe .json',
             alias: 'e',
             type: 'string',
         },
         decryptor: {
-            description: 'file path to decrypt recipe .json',
+            description: 'file path to inbound recipe .json',
             alias: 'd',
             type: 'string',
         }
     })
 
-    .command('socket-basic', 'socket encrypt (send), decrypt (recv) CyberChef recipe mode', {
-        input: {
-            description: 'input',
-            alias: 'i',
-            type: 'string',
-        },
-        encryptor: {
-            description: 'file path to encrypt recipe .json',
-            alias: 'e',
-            type: 'string',
-        },
-        decryptor: {
-            description: 'file path to decrypt recipe .json',
-            alias: 'd',
-            type: 'string',
-        }
-    })
-
-    .command('core', 'stdin to stdout encrypt/decrypt recipe mode', {
+    .command('core', 'stdin to stdout recipe mode', {
         recipe: {
-            description: 'file path to encryptor/decryptor CyberChef recipe (.json)',
+            description: 'file path to recipe .json',
             alias: 'r',    
             type: 'string',
         },
         mode: {
-            description: 'verbose mode on',
+            description: 'verbose on',
             alias: 'v',    
             type: 'bool',
         }
