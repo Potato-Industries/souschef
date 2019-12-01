@@ -1,5 +1,5 @@
 # souschef
-CyberChef (Node-API) encryption / decryption / encoding / decoding (+ more) recipe tool
+CyberChef Recipe tool (Encrypt;Decrypt;Encode;Decode.. + more!)
 - https://gchq.github.io/CyberChef/
 - https://github.com/gchq/CyberChef/wiki/Node-API
 
