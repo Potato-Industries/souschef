@@ -1,0 +1,1 @@
+[{"op":"Derive EVP key","args":[{"option":"UTF8","string":"AAAAAAAAAAAAAAAA"},128,1,"SHA1",{"option":"Hex","string":"BBBBBBBBBBBBBBBB"}]}]
