@@ -1,0 +1,1 @@
+[{"op":"Blowfish Encrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAAA"},{"option":"Hex","string":"BBBBBBBBBBBBBBBB"},"CBC","Raw","Hex"]}]

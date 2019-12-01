@@ -1,0 +1,1 @@
+[{"op":"DES Encrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAA"},{"option":"Hex","string":"BBBBBBBBBBBBBBB"},"CBC","Raw","Hex"]}]
