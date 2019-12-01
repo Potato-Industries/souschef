@@ -27,25 +27,42 @@ root@WOPR-KALI:/opt/souschef# nodejs souschef.js -h
 souschef.js [command]
 
 Commands:
-  souschef.js socket  socket outbound recipe (send), inbound recipe (recv) mode
-  souschef.js core    stdin to stdout recipe mode
+  souschef.js socket  stdin | souschef <-- TCP --> ip:port
+  souschef.js core    stdin | souschef | stdout
 
 Options:
   --version   Show version number                                      [boolean]
-  --help, -h  Show help                                                [boolean]
+  --help, -h  Show help  
 ```
 
 ```
 root@WOPR-KALI:/opt/souschef# nodejs souschef.js core -h
 souschef.js core
 
-stdin to stdout recipe mode
+stdin | souschef | stdout
 
 Options:
   --version     Show version number                                    [boolean]
   --help, -h    Show help                                              [boolean]
   --recipe, -r  file path to recipe .json                               [string]
   --mode, -v    verbose on
+
+```
+
+```
+root@WOPR-KALI:/opt/souschef# nodejs souschef.js socket -h
+souschef.js socket
+
+stdin | souschef <-- TCP --> ip:port
+
+Options:
+  --version   Show version number                                      [boolean]
+  --help, -h  Show help                                                [boolean]
+  --ip        destination ip or domain                                  [string]
+  --port      destination port                                          [string]
+  --out       file path to outbound recipe .json                        [string]
+  --in        file path to inbound recipe .json                         [string]
+  --mode, -v  verbose on
 
 ```
 
@@ -86,7 +103,7 @@ Snefru
 Tiger-128
 ```
 
-**Blowfish Encrypt/Decrypt**
+**Blowfish Encrypt | Blowfish Decrypt**
 
 ```
 root@WOPR-KALI:/opt/souschef# echo "potato" | nodejs souschef.js core -r recipes/encrypt/blowfish-cbc.json | nodejs souschef.js core -r recipes/decrypt/blowfish-cbc.json 
@@ -94,7 +111,7 @@ potato
 
 ```
 
-**AES Encrypt -> Base64 Encode -> Base64 Decode -> AES Decrypt**
+**AES Encrypt; Base64 Encode | Base64 Decode; AES Decrypt**
 
 ```
 root@WOPR-KALI:/opt/souschef# echo "potato" | nodejs souschef.js core -r recipes/custom/AESe-recipe.json | nodejs souschef.js core -r recipes/custom/AESd-recipe.json 
@@ -111,6 +128,35 @@ potato
 **AESd-recipe.json**
 ```
 [{"op":"From Base64","args":["A-Za-z0-9+/=",true]},{"op":"AES Decrypt","args":[{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},{"option":"Hex","string":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"CBC","Hex","Raw",{"option":"Hex","string":""}]}]
+```
+
+**Socket mode**
+```
+root@WOPR-KALI:/opt/souschef# socat STDIO STDIO | nodejs souschef.js socket --ip 127.0.0.1 --port 8080 --out recipes/encode/base64.json --in recipes/empty.json
+potato
+potarto
+^C
+
+root@WOPR-KALI:~# nc -lvp 8080
+listening on [any] 8080 ...
+connect to [127.0.0.1] from localhost [127.0.0.1] 41542
+cG90YXRvCg==potarto
+^C
+
+```
+
+Alternatively just use socat...
+
+```
+root@WOPR-KALI:/opt/souschef# echo "potato" | nodejs souschef.js core -r recipes/encode/base64.json | socat - tcp-connect:localhost:8080
+root@WOPR-KALI:/opt/souschef# echo "potato" | nodejs souschef.js core -r recipes/encode/base64.json > potato.b64
+root@WOPR-KALI:/opt/souschef# md5sum potato.b64 
+1021506e38119e37d5df7255b8a207bb  potato.b64
+
+root@WOPR-KALI:/var/tmp~# nc -lnp 8080 > potato.b64
+root@WOPR-KALI:/var/tmp~# md5sum potato.b64 
+1021506e38119e37d5df7255b8a207bb  potato.b64
+
 ```
 
 **Verbose mode**
@@ -133,7 +179,6 @@ YmUxNGEwMDc2ODI5MTlkNzljNmVmYWYwOGY1ZTE0MjE=
 
 - Provide ability to chain multiple recipes files in command line. 
 - Provide ability to update common variables in recipe files from command line. (i.e. key, iv, secrets)
-- Socket-Basic: outbound recipe (send)/ inbound recipe (recv) tcp socket mode.
 
 **Disclaimer**
 
