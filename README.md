@@ -14,6 +14,7 @@ http://www.dest-unreach.org/socat/
 apt-get install nodejs
 apt-get install npm
 npm install --save cyberchef
+npm install --save yargs
 
 ```
 
