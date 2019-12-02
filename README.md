@@ -5,7 +5,7 @@ stdin | souschef (run through CyberChef Recipe) | stdout
 - https://gchq.github.io/CyberChef/
 - https://github.com/gchq/CyberChef/wiki/Node-API
 
-> CyberChef is really cool! It allows you to rapidly template encryption/decryption/encoding/decoding/+more routines trivially. This is a very simple application that brings CyberChef's capabilities to your shell allowing you to pipe via stdin/stdout to other applications. This is especially useful if you don't feel like writing any encryption code from scratch, which was one of the reasons why i wrote this, a similar tool most probably exists somewhere on the internet, oh well. 
+> CyberChef is really cool! It allows you to rapidly template encryption/decryption/encoding/decoding/+more routines. This is a very simple application that brings CyberChef's capabilities to your shell allowing you to pipe via stdin/stdout to other applications. This is especially useful if you don't feel like writing any encryption code from scratch, which was one of the reasons why i wrote this, a similar tool most probably exists somewhere on the internet, oh well. 
 
 
 **Requirements**
