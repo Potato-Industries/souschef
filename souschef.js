@@ -60,7 +60,7 @@ if (argv._.includes('core')) {
       process.stdin.on('readable', () => {
         var input = process.stdin.read();
         if (input !== null) {
-          process.stdout.write(chef.bake(input, recipe).toString());
+          process.stdout.write(chef.bake(input.slice(0, -1), recipe).toString());
         }
       }); 
    }
@@ -74,7 +74,7 @@ if (argv._.includes('core')) {
         console.log('stdin: ');
         console.log(input + '\n');
         console.log('stdout: ');  
-        process.stdout.write(chef.bake(input, recipe).toString());
+        process.stdout.write(chef.bake(input.slice(0, -1), recipe).toString());
       }
     }); 
   }
