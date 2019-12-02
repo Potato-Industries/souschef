@@ -155,8 +155,8 @@ root@WOPR-KALI:/opt/souschef# echo "potato" | nodejs souschef.js core -r recipes
 root@WOPR-KALI:/opt/souschef# md5sum potato.b64 
 1021506e38119e37d5df7255b8a207bb  potato.b64
 
-root@WOPR-KALI:/var/tmp~# nc -lnp 8080 > potato.b64
-root@WOPR-KALI:/var/tmp~# md5sum potato.b64 
+root@WOPR-KALI:/var/tmp# nc -lnp 8080 > potato.b64
+root@WOPR-KALI:/var/tmp# md5sum potato.b64 
 1021506e38119e37d5df7255b8a207bb  potato.b64
 
 ```
