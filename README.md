@@ -103,6 +103,25 @@ Snefru
 Tiger-128
 ```
 
+**Disassemble x86/x86_64**
+
+https://www.exploit-db.com/shellcodes/47513
+
+```
+WOPR@WOPR souschef % echo "\x99\xf7\xe2\x8d\x08\xbe\x2f\x2f\x73\x68\xbf\x2f\x62\x69\x6e\x51\x56\x57\x8d\x1c\x24\xb0\x0b\xcd\x80" | node souschef.js core -r recipes/shellcode/disass-x86.json
+00000000 99                              CDQ
+00000001 F7E2                            MUL EAX,EDX
+00000003 8D08                            LEA ECX,[EAX]
+00000005 BE2F2F7368                      MOV ESI,68732F2F
+0000000A BF2F62696E                      MOV EDI,6E69622F
+0000000F 51                              PUSH ECX
+00000010 56                              PUSH ESI
+00000011 57                              PUSH EDI
+00000012 8D1C24                          LEA EBX,[ESP]
+00000015 B00B                            MOV AL,0B
+00000017 CD80                            INT 80
+```
+
 **Blowfish Encrypt | Blowfish Decrypt**
 
 ```
@@ -159,6 +178,15 @@ root@WOPR-KALI:/var/tmp# nc -lnp 8080 > potato.b64
 root@WOPR-KALI:/var/tmp# md5sum potato.b64 
 1021506e38119e37d5df7255b8a207bb  potato.b64
 
+```
+**Tar, Untar**
+
+```
+WOPR@WOPR souschef % echo "hello" | node souschef.js core -r recipes/compression/tar.json > test.tar
+WOPR@WOPR souschef % file test.tar 
+test.tar: POSIX tar archive
+WOPR@WOPR souschef % cat test.tar | node souschef.js core -r recipes/compression/untar.json          
+hello%                                          
 ```
 
 **Verbose mode**
